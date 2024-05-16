@@ -154,7 +154,7 @@ def results():
 
 @app.route('/download/<filename>')
 def download(filename):
-    directory = "static"
+    directory = "./static"
     return send_from_directory(directory, filename, as_attachment=True)
 
 @app.route('/')
