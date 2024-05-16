@@ -34,14 +34,22 @@ HTML_FORM = """
             display: flex;
             flex-direction: column;
         }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
         input[type=text], input[type=number], select {
             padding: 10px;
             margin-bottom: 10px;
             border-radius: 4px;
             border: 1px solid #ddd;
+            width: 100%;
         }
         input[type=checkbox] {
-            margin-bottom: 20px;
+            margin-right: 10px;
         }
         input[type=submit] {
             background-color: #04AA6D;
@@ -61,23 +69,52 @@ HTML_FORM = """
     <div class="container">
         <h2>Enter Property Details</h2>
         <form action="/results" method="post">
-            <input type="text" name="location" placeholder="Location" required>
-            <select name="listing_type">
-                <option value="for_sale">For Sale</option>
-                <option value="for_rent">For Rent</option>
-                <option value="sold">Sold</option>
-            </select>
-            <input type="number" name="radius" placeholder="Radius (miles)" step="0.01">
-            <input type="checkbox" name="mls_only" value="true"> MLS Only<br>
-            <input type="number" name="past_days" placeholder="Past Days">
-            <input type="text" name="date_from" placeholder="Date From (YYYY-MM-DD)">
-            <input type="text" name="date_to" placeholder="Date To (YYYY-MM-DD)">
-            <input type="checkbox" name="foreclosure" value="true"> Foreclosure<br>
-            <input type="submit" value="Show Results">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter location" required>
+            </div>
+            <div class="form-group">
+                <label for="listing_type">Listing Type</label>
+                <select id="listing_type" name="listing_type">
+                    <option value="for_sale">For Sale</option>
+                    <option value="for_rent">For Rent</option>
+                    <option value="sold">Sold</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="radius">Radius (miles)</label>
+                <input type="number" id="radius" name="radius" placeholder="Enter radius (miles)" step="0.01">
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="mls_only" value="true"> MLS Only
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="past_days">Past Days</label>
+                <input type="number" id="past_days" name="past_days" placeholder="Enter number of past days">
+            </div>
+            <div class="form-group">
+                <label for="date_from">Date From (YYYY-MM-DD)</label>
+                <input type="text" id="date_from" name="date_from" placeholder="Enter start date (YYYY-MM-DD)">
+            </div>
+            <div class="form-group">
+                <label for="date_to">Date To (YYYY-MM-DD)</label>
+                <input type="text" id="date_to" name="date_to" placeholder="Enter end date (YYYY-MM-DD)">
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="foreclosure" value="true"> Foreclosure
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Show Results">
+            </div>
         </form>
     </div>
 </body>
 </html>
+
 """
 
 # Route for displaying results
